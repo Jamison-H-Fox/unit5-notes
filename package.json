@@ -1,0 +1,11 @@
+{
+  "name": "unit5-notes",
+  "version": "1.0.0",
+  "description": "notes for BloomTech Unit 5 - ACS",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "",
+  "license": "ISC"
+}
