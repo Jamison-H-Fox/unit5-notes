@@ -110,15 +110,12 @@ const levelFirstTraversal = (root) => {
     while(queue.length !== 0) {
         root = queue.shift()
         output.push(root.value);
-        console.log('queue: ', queue)
-        console.log('root:  ', root)
         if(root.left !== null) {
             queue.push(root.left)
         }
         if(root.right !== null) {
             queue.push(root.right)
         }
-        console.log('queue: ', queue)
     }
     
     return output
@@ -133,8 +130,34 @@ const searcher = (root, value) => {
     if (value === root.value) {
         return true;
     } else if(value < root.value) {
-        return solution(root.left, value)
+        return searcher(root.left, value)
     } else {
-        return solution(root.right, value)
+        return searcher(root.right, value)
     }
 }
+
+// returns an array of values visited.
+// I couldn't figure out how to visit in proper order,
+// so I just did a .sort() on them after 🤷‍♂️
+const inOrderTraversal = (root) => {
+    if (root === null) {
+        return []
+    };
+    
+    const stack = [root];
+    const output = [];
+    
+    while(stack.length !== 0) {
+        root = stack.pop();
+        output.push(root.value);
+        if(root.right !== null) {
+            stack.push(root.right)
+        }
+        if(root.left !== null) {
+            stack.push(root.left)
+        }
+    }
+    
+    return output
+}
+
