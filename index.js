@@ -75,3 +75,25 @@ function nodeListStuff(head, value, index) {
 }
 
 console.log(nodeListStuff(head, value, index))
+
+// Singly-linked lists are already defined with this interface:
+// function ListNode(x) {
+//   this.value = x;
+//   this.next = null;
+// }
+//
+function solution(l, value) {
+    let n = new ListNode(value);
+    
+    // if empty list, return n
+    if(l == null) {
+        return n
+    }
+    
+    // find appropriate node and insert in place
+    let previous = l;
+    let current = l.next;
+    
+    console.log(previous)
+    console.log(current)
+}
