@@ -97,3 +97,44 @@ function solution(l, value) {
     console.log(previous)
     console.log(current)
 }
+
+// performs an lft and returns an array of values traversed
+const levelFirstTraversal = (root) => {
+    if (root === null) {
+        return []
+    }
+    
+    let queue = [root];
+    let output = [];
+    
+    while(queue.length !== 0) {
+        root = queue.shift()
+        output.push(root.value);
+        console.log('queue: ', queue)
+        console.log('root:  ', root)
+        if(root.left !== null) {
+            queue.push(root.left)
+        }
+        if(root.right !== null) {
+            queue.push(root.right)
+        }
+        console.log('queue: ', queue)
+    }
+    
+    return output
+}
+
+// recursively searches a binary search tree for a given value
+const searcher = (root, value) => {
+    if (root === null) {
+        return false;
+    }
+    
+    if (value === root.value) {
+        return true;
+    } else if(value < root.value) {
+        return solution(root.left, value)
+    } else {
+        return solution(root.right, value)
+    }
+}
