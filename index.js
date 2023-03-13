@@ -161,3 +161,81 @@ const inOrderTraversal = (root) => {
     return output
 }
 
+// binary and linear search algorithms
+const linearSearch = (array, target) => {
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] === target) {
+            return i
+        }        
+    }
+    
+    return -1
+}
+
+const binarySearch = (array, target) => {
+    let start = 0;
+    let end = array.length - 1;
+
+    while (start <= end) {
+        let mid = Math.floor((start + end) / 2);
+
+        if (array[mid] === target) {
+            return mid;
+        }
+
+        if (target < array[mid]) {
+            end = mid - 1;
+        } else {
+            start = mid + 1;
+        }
+    }
+    
+    return -1;
+}
+
+const builtInSort = (a) => {
+    a.sort((a, b) => { return a - b });
+    return a
+}
+
+const bubbleSort = (a) => {
+    for (let top_index = a.length - 1; top_index >= 1; top_index--) {
+        let swapped = false;
+        
+        for (let i = 0; i < top_index; i++) {
+            if (a[i] > a [i + 1]) {
+                // below is a modern variable swap
+                // no need to create a temp variable to hold values
+                [ a[i], a[i + 1] ] = [ a[i + 1], a[i] ];
+                swapped = true;
+            }
+        }
+        
+        // break early if no swaps made in pass
+        // small optimization
+        if (!swapped) {
+            break;
+        }
+    }
+    
+    return a;
+}
+
+const insertionSort = (a) => {
+    for (let i = 1; i < a.length; i++) {
+        // First, choose the element at index 1
+        let current = a[i];
+        let j;
+
+        // Loop from right to left, starting from i-1 to index 0
+        for (j = i - 1; j >= 0 && a[j] > current; j--) {
+        // as long as a[j] is bigger than current
+        // move a[j] to the right at a[j + 1]
+            a[j + 1] = a[j];
+        }
+        // Place the current element at index 0
+        // or next to the smaller element
+        a[j + 1] = current;
+    }
+    return a;
+}
